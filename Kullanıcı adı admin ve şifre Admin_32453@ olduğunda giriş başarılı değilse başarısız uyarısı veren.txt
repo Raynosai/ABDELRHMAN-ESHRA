@@ -1,0 +1,14 @@
+Console.Write("Kullanıcı Adı: ");
+string kullaniciAdi = Console.ReadLine();
+
+Console.Write("Şifre: ");
+string sifre = Console.ReadLine();
+
+if (kullaniciAdi == "admin" && sifre == "Admin_32453@")
+{
+    Console.WriteLine("Giriş Başarılı");
+}
+else
+{
+    Console.WriteLine("Giriş Başarısız");
+}
