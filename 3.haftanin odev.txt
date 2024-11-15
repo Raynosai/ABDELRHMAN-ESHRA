@@ -1,0 +1,234 @@
+Soru 1 - Foreach Döngüsü ile Liste Elemanlarını Yazdırma
+
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        List<int> numbers = new List<int>();
+        numbers.Add(10);
+        numbers.Add(20);
+        numbers.Add(30);
+        numbers.Add(40);
+
+        int total = 0;
+        foreach (int number in numbers)
+        {
+            Console.WriteLine("Sayı: " + number);
+            total = total + number; // Daha uzun yazım
+        }
+        Console.WriteLine("Sayıların Toplamı: " + total.ToString());
+    }
+}
+_________________________________________________________________________________________________________________________________________________________
+Soru 2 - Hazır Metod Kullanımı
+
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Bir cümle giriniz:");
+        string sentence = Console.ReadLine();
+
+        string[] words = sentence.Split(' '); // Kelimeleri ayır
+        int wordCount = words.Length; // Kelime sayısını al
+        Console.WriteLine("Kelime Sayısı: " + wordCount.ToString()); // Sonucu yazdır
+    }
+}
+_________________________________________________________________________________________________________________________________________________________
+Soru 3 - ArrayList ile Alfabetik Sıralama
+
+using System;
+using System.Collections;
+
+class Program
+{
+    static void Main()
+    {
+        ArrayList names = new ArrayList();
+        Console.WriteLine("Lütfen 5 adet isim giriniz:");
+
+        for (int i = 0; i < 5; i++)
+        {
+            string input = Console.ReadLine();
+            names.Add(input);
+        }
+
+        names.Sort(); // Alfabetik sıralama yap
+        Console.WriteLine("Sıralı İsimler:");
+
+        foreach (object name in names) // object türüyle foreach döngüsü
+        {
+            Console.WriteLine(name.ToString());
+        }
+    }
+}
+
+_________________________________________________________________________________________________________________________________________________________
+Soru 4 - For Döngüsü ile Fibonacci Serisi
+
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Bir sayı giriniz:");
+        int count = Convert.ToInt32(Console.ReadLine()); // Daha uzun biçimde tür dönüşümü
+
+        int first = 0;
+        int second = 1;
+        int next;
+
+        Console.Write("Fibonacci Serisi: ");
+        for (int i = 0; i < count; i++)
+        {
+            Console.Write(first.ToString() + " ");
+            next = first + second; // Sonraki sayıyı hesapla
+            first = second;
+            second = next;
+        }
+        Console.WriteLine(); // Yeni satır için boş bir Console.WriteLine
+    }
+}
+
+_________________________________________________________________________________________________________________________________________________________
+Soru 5 - While Döngüsü ile Tahmin Oyunu
+
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int secretNumber = 7; // Tahmin edilmesi gereken sayı
+        int guess = -1; // Varsayılan yanlış tahmin
+
+        Console.WriteLine("Bir sayı tahmin ediniz:");
+        while (guess != secretNumber) // Tahmin doğru olana kadar döngü
+        {
+            string input = Console.ReadLine();
+            guess = Convert.ToInt32(input); // Uzun dönüşüm
+
+            if (guess != secretNumber) // Yanlış tahmin kontrolü
+            {
+                Console.WriteLine("Yanlış tahmin, tekrar deneyiniz.");
+            }
+        }
+        Console.WriteLine("Tebrikler! Doğru tahmin yaptınız.");
+    }
+}
+
+_________________________________________________________________________________________________________________________________________________________
+Soru 6 - Do While Döngüsü ile Basit Hesap Makinesi
+
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string operation = ""; // İşlem türü
+        do
+        {
+            Console.WriteLine("Bir işlem seçiniz (+, -, *, /) veya 'çıkış' yazınız:");
+            operation = Console.ReadLine();
+
+            if (operation != "çıkış")
+            {
+                Console.WriteLine("Birinci sayıyı giriniz:");
+                string input1 = Console.ReadLine();
+                double num1 = Convert.ToDouble(input1);
+
+                Console.WriteLine("İkinci sayıyı giriniz:");
+                string input2 = Console.ReadLine();
+                double num2 = Convert.ToDouble(input2);
+
+                if (operation == "+")
+                {
+                    double result = num1 + num2;
+                    Console.WriteLine("Sonuç: " + result.ToString());
+                }
+                else if (operation == "-")
+                {
+                    double result = num1 - num2;
+                    Console.WriteLine("Sonuç: " + result.ToString());
+                }
+                else if (operation == "*")
+                {
+                    double result = num1 * num2;
+                    Console.WriteLine("Sonuç: " + result.ToString());
+                }
+                else if (operation == "/")
+                {
+                    if (num2 == 0)
+                    {
+                        Console.WriteLine("Hata: Sıfıra bölme yapılamaz!");
+                    }
+                    else
+                    {
+                        double result = num1 / num2;
+                        Console.WriteLine("Sonuç: " + result.ToString());
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Geçersiz işlem!");
+                }
+            }
+        } while (operation != "çıkış");
+
+        Console.WriteLine("Hesap makinesi kapatıldı.");
+    }
+}
+
+_________________________________________________________________________________________________________________________________________________________
+Soru 7 - For ve While Döngüsü ile Sayı Toplama Oyunu
+
+
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        List<int> numbers = new List<int>(); // Sayılar listesi
+        int input = -1; // Başlangıç değeri
+
+        Console.WriteLine("Pozitif tam sayılar giriniz (Bitirmek için 0 giriniz):");
+
+        while (input != 0) // Kullanıcı 0 girene kadar devam
+        {
+            string userInput = Console.ReadLine();
+            input = Convert.ToInt32(userInput); // Uzun dönüşüm
+
+            if (input > 0)
+            {
+                numbers.Add(input);
+            }
+        }
+
+        int total = 0; // Toplam değişkeni
+        foreach (int num in numbers)
+        {
+            total = total + num; // Toplamı hesapla
+        }
+
+        Console.WriteLine("Girilen sayıların toplamı: " + total.ToString());
+        Console.WriteLine("Girilen pozitif sayılar:");
+
+        for (int i = 0; i < numbers.Count; i++)
+        {
+            Console.WriteLine(numbers[i]); // Liste elemanlarını yazdır
+        }
+    }
+}
